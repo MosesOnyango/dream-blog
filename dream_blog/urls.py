@@ -10,4 +10,8 @@ urlpatterns = [
     path('logout/', auth_view.LogoutView.as_view(template_name='accounts/logout.html'), name="logout"),
     path('', include('blog.urls')),
     path('', include('accounts.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
